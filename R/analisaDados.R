@@ -2,6 +2,8 @@ library(tidyverse)
 
 load("../data/robotox.RData")
 
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III"] <- "Classificação toxicológica: Classe III - Medianamente Tóxico."
+
 p1 <- df_join_agro_cultura %>% 
   mutate(Aplicacao = str_replace_all(Aplicacao, "[.]",",")) %>%
   mutate(Aplicacao = toupper(Aplicacao)) %>%
@@ -31,6 +33,8 @@ p1 <- df_join_agro_cultura %>%
        title = "Níveis de Toxicidade dos Produtos vs. Aplicação",
        fill = "Toxicidade")
 
-png("toxicidade_por_produto.png",width=3200,height=1800,res=300)
+png("../figures/toxicidade_por_produto.png",width=3200,height=1800,res=300)
 print(p1)
 dev.off()
+
+
