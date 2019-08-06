@@ -3,10 +3,14 @@ library(tidyverse)
 load("../data/robotox.RData")
 
 df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III"] <- "Classificação toxicológica: Classe III - Medianamente Tóxico."
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Mediante Tóxico."] <- "Classificação toxicológica: Classe III - Medianamente Tóxico."
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Mediante Toxico."] <- "Classificação toxicológica: Classe III - Medianamente Tóxico."
+
+
 
 p1 <- df_join_agro_cultura %>% 
-  mutate(Aplicacao = str_replace_all(Aplicacao, "[.]",",")) %>%
   mutate(Aplicacao = toupper(Aplicacao)) %>%
+  mutate(Aplicacao = str_replace_all(Aplicacao, "[.]",",")) %>%
   mutate(Aplicacao = strsplit(as.character(Aplicacao), ",")) %>% 
   unnest(Aplicacao) %>%
   mutate(Aplicacao = str_trim(Aplicacao)) %>%
@@ -23,7 +27,7 @@ p1 <- df_join_agro_cultura %>%
   group_by(Aplicacao, Classificacao_toxicologica, total)%>%
   summarise(parcial = n()) %>%
   arrange(total,parcial) %>%
-  tail(100) %>%
+  tail(150) %>%
   ggplot(aes(x = reorder(Aplicacao, total), y = parcial, fill = Classificacao_toxicologica)) +
   geom_bar(stat = "identity") +
   theme_bw() +
