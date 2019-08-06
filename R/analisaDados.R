@@ -18,20 +18,6 @@ df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificac
 df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe IV - Pouco Tóxico."] <-  "Classe IV - Pouco Tóxico"
 df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe IV - Produto Pouco Tóxico."] <-  "Classe IV - Pouco Tóxico"   
 
-     
-       
-       
-
-  
-                          
-   
-    
-   
-   
-       
-
-
-
 p1 <- df_join_agro_cultura %>% 
   mutate(Aplicacao = toupper(Aplicacao)) %>%
   mutate(Aplicacao = str_replace_all(Aplicacao, "[.]",",")) %>%
@@ -48,16 +34,17 @@ p1 <- df_join_agro_cultura %>%
   group_by(Aplicacao) %>%
   mutate(total = n()) %>%
   ungroup()%>%
+  filter(Aplicacao != "")%>%
   group_by(Aplicacao, Classificacao_toxicologica, total)%>%
   summarise(parcial = n()) %>%
   arrange(total,parcial) %>%
-  tail(150) %>%
+  filter(total > 150) %>%
   ggplot(aes(x = reorder(Aplicacao, total), y = parcial, fill = Classificacao_toxicologica)) +
   geom_bar(stat = "identity") +
   theme_bw() +
   coord_flip() + 
   labs(x = "Número de produtos", 
-       y = "Aplicaçãoo dos produtos", 
+       y = "Aplicação dos produtos", 
        title = "Níveis de Toxicidade dos Produtos vs. Aplicação",
        fill = "Toxicidade")
 
