@@ -1,4 +1,5 @@
 library(tidyverse)
+library()
 
 load("data/robotox.RData")
 
@@ -19,23 +20,44 @@ df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificac
 df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe IV - Produto Pouco Tóxico."] <-  "Classe IV - Pouco Tóxico"   
 
 
+culturas<- df_join_agro_cultura %>%
+  filter(Is_produto_tecnico == 0) %>%
+  distinct(cultura)
+  
 
-df_join_agro_cultura %>%
+
+p1<- df_join_agro_cultura %>%
   distinct(Marca, Classificacao_toxicologica) %>%
   ggplot(aes(x= Classificacao_toxicologica, fill=Classificacao_toxicologica)) +
   geom_bar()+
   coord_flip()  +
-  theme_bw() 
+  theme_bw() + 
+  labs(y = "Número de produtos", 
+       x = "Toxicidade", 
+       title = "Nível de Toxicidade x Número de produtos",
+       fill = "Toxicidade")
+
+png("figures/distribuicao_toxicidade_produto.png",width=3200,height=1800,res=300)
+print(p1)
+dev.off()
 
 
-df_join_agro_cultura %>%
+
+p1<- df_join_agro_cultura %>%
   distinct(Classificacao_toxicologica, cultura)%>%
   ggplot(aes(x= Classificacao_toxicologica, fill=Classificacao_toxicologica)) +
   geom_bar()+
   coord_flip()  +
-  theme_bw() 
+  theme_bw() + 
+  labs(y = "Número de culturas", 
+       x = "Toxicidade", 
+       title = "Nível de Toxicidade x Número de culturas",
+       fill = "Toxicidade")
 
   
+png("figures/distribuicao_toxicidade_cultura.png",width=3200,height=1800,res=300)
+print(p1)
+dev.off()
 
 
 
@@ -84,6 +106,8 @@ produtores <- df_join_agro_cultura %>%
 unlist(strsplit(df_join_agro_cultura$Produtor,"[.]"))
 
 
+
+
 p1<-df_join_agro_cultura %>%  
   filter(cultura =="trata-se de produto técnico") %>% 
   mutate(splits = strsplit(Marca, " ")) %>%
@@ -107,3 +131,135 @@ p1<-df_join_agro_cultura %>%
 png("agrotoxicos_substancias.png",width=3200,height=1800,res=300)
 print(p1)
 dev.off()
+
+
+
+
+rexp <- "^(\\w+)\\s?(.*)$"
+
+df_join_agro_cultura$nome_curto_produtor<- sub(rexp,"\\1",df_join_agro_cultura$Produtor)
+
+df_join_agro_cultura$nome_curto_produtor[df_join_agro_cultura$nome_curto_produtor== "Iharabras"]<- "Iharabrás"
+df_join_agro_cultura$nome_curto_produtor[df_join_agro_cultura$nome_curto_produtor== "Agro"]<- "Agroimport"
+df_join_agro_cultura$nome_curto_produtor[df_join_agro_cultura$nome_curto_produtor== "Ouro"]<- "Ouro Fino"
+
+
+
+summary((df_join_agro_cultura%>%
+           distinct(nome_curto_produtor,Marca) %>%
+  group_by(nome_curto_produtor) %>%
+  summarise(quantidade = n()) %>%
+  arrange(desc(quantidade)) %>%
+  top_n(20))$quantidade)
+
+df_join_agro_cultura%>%
+  distinct(nome_curto_produtor,Marca) %>%
+  group_by(nome_curto_produtor) %>%
+  summarise(quantidade = n()) %>%
+  filter(quantidade>= 6) %>%
+  arrange(desc(quantidade)) %>%
+  
+  
+  df_join_agro_cultura %>% 
+  filter(cultura !="trata-se de produto técnico")%>%
+  mutate(cultura = toupper(cultura)) %>%
+  mutate(cultura = str_trim(cultura)) %>%
+  group_by(cultura) %>% 
+  mutate(total = n()) %>% 
+  ungroup() %>%
+  mutate(Classificacao_toxicologica = toupper(Classificacao_toxicologica)) %>%
+  mutate(Classificacao_toxicologica = str_replace_all(Classificacao_toxicologica, "CLASSIFICAÇÃO TOXICOLÓGICA:","")) %>%
+  mutate(Classificacao_toxicologica = str_replace_all(Classificacao_toxicologica, "CLASSIFICAÇÃO:","")) %>%
+  mutate(Classificacao_toxicologica = str_replace_all(Classificacao_toxicologica, "[.]","")) %>%
+  mutate(Classificacao_toxicologica = str_trim(Classificacao_toxicologica)) %>%
+  mutate(Classificacao_toxicologica = as.factor(Classificacao_toxicologica)) %>%
+  arrange(total) %>%
+  group_by(cultura, Classificacao_toxicologica, total)%>%
+  summarise(parcial = n()) %>%
+  arrange(total,parcial) %>%
+  filter(total > 10) %>%
+  ggplot(aes(x=Classificacao_toxicologica, y= 2, fill=cultura))+
+  geom_col()
+
+
+df_join_agro_cultura %>%
+  filter(Is_produto_tecnico==0) %>%
+  group_by(Classificacao_toxicologica, cultura) %>%
+  summarise(contagem = n())
+
+
+
+
+cultura_sel<- tolower((df_join_agro_cultura %>% 
+                 filter(cultura !="trata-se de produto técnico")%>%
+                 mutate(cultura = toupper(cultura)) %>%
+                 mutate(cultura = str_trim(cultura)) %>%
+                 group_by(cultura) %>% 
+                 mutate(total = n()) %>% 
+                 ungroup() %>%
+                 mutate(Classificacao_toxicologica = toupper(Classificacao_toxicologica)) %>%
+                 mutate(Classificacao_toxicologica = str_replace_all(Classificacao_toxicologica, "CLASSIFICAÇÃO TOXICOLÓGICA:","")) %>%
+                 mutate(Classificacao_toxicologica = str_replace_all(Classificacao_toxicologica, "CLASSIFICAÇÃO:","")) %>%
+                 mutate(Classificacao_toxicologica = str_replace_all(Classificacao_toxicologica, "[.]","")) %>%
+                 mutate(Classificacao_toxicologica = str_trim(Classificacao_toxicologica)) %>%
+                 mutate(Classificacao_toxicologica = as.factor(Classificacao_toxicologica)) %>%
+                 arrange(total) %>%
+                 group_by(cultura, Classificacao_toxicologica, total)%>%
+                 summarise(parcial = n()) %>%
+                 arrange(total,parcial) %>%
+                 filter(total > 10) %>%
+                 ungroup() %>%
+                 distinct(cultura))$cultura)
+
+
+factor_cultura<-(df_join_agro_cultura %>%
+  group_by(cultura) %>%
+  summarise(contagem = n()) %>%
+  arrange(contagem))$cultura
+
+df_cluster$influencers<- factor(df_cluster$influencers, levels = df_factor_influencers$influencers)
+
+df_join_agro_cultura$cultura <- factor(df_join_agro_cultura$cultura, levels = factor_cultura)
+
+p1<- df_join_agro_cultura %>%
+  filter(cultura%in%cultura_sel,
+         Classificacao_toxicologica %in% c("Classe I - Extremamente Tóxico","Classe III - Moderadamente Tóxico")) %>%
+  
+  ggplot(aes(x=cultura, fill= Classificacao_toxicologica))+
+  geom_bar() + 
+  facet_grid(Classificacao_toxicologica ~ .)  +
+  #facet_grid(~Classificacao_toxicologica ) + 
+  coord_flip() +
+  labs(y = "Número de produtos", 
+       x = "Cuturas", 
+       title = "Exposição das culturas a toxicidade")
+png("figures/agrotoxicos_cutura_classe.png",width=3200,height=3000,res=300)
+print(p1)
+dev.off()
+
+
+df_join_agro_cultura%>%
+  group_by( cultura) %>%
+  summarise(contagem = n())  %>%
+  ggplot() +
+  geom_histogram(aes(x=contagem),color="black", fill="white", binwidth = 5) +
+    labs(y = "Número de produtos", 
+       x = "Agrotóxicos", 
+       title = "Agrotóxicos",
+       fill = "Toxicidade")
+png("agrotoxicos_substancias.png",width=3200,height=1800,res=300)
+print(p1)
+dev.off()
+
+
+
+#  facet_grid(Classificacao_toxicologica ~ .)  
+
+
+nomes_curtos<- df_join_agro_cultura%>%
+  distinct(Produtor,nome_curto_produtor) %>%
+  arrange(nome_curto_produtor)
+
+library(readODS)
+readODS::read_ods("/data/tabela1618.ods")
+
