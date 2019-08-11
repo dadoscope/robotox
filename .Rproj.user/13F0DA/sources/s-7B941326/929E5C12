@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565467985301.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "929E5C12",
+    "lastKnownWriteTime" : 1565443828,
+    "last_content_update" : 1565467985301,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "2e7205c24fdc44158899b7bc686180f6",
+        "name" : "prdoutores_sep",
+        "title" : "prdoutores_sep"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

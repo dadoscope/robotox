@@ -1,0 +1,12 @@
+name: Painel_agrotoxico
+title: Painel_agrotoxico
+username:
+account: fabdev
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1079739
+bundleId: 2309336
+url: https://fabdev.shinyapps.io/Painel_agrotoxico/
+when: 1565537504.34693
+asMultiple: FALSE
+asStatic: FALSE

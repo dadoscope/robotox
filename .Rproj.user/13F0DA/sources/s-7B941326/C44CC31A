@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565465671258.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C44CC31A",
+    "lastKnownWriteTime" : 1565443828,
+    "last_content_update" : 1565465671258,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "F8453128",
+        "caption" : "agrotoxico",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=agrotoxico&cache_key=F8453128",
+        "displayedObservations" : 266,
+        "environment" : "",
+        "expression" : "agrotoxico",
+        "object" : "agrotoxico",
+        "preview" : 0,
+        "totalObservations" : 266,
+        "variables" : 8
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

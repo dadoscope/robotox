@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565442160896.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7D30CEFA",
+    "lastKnownWriteTime" : 1564932904,
+    "last_content_update" : 1565442354681,
+    "path" : "~/GitHub/Robotox/robotox/R/ETL.R",
+    "project_path" : "R/ETL.R",
+    "properties" : {
+        "cursorPosition" : "227,0",
+        "scrollLine" : "218"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

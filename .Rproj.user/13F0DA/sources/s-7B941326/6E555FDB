@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565536534429.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1235087189",
+    "id" : "6E555FDB",
+    "lastKnownWriteTime" : 1565537461,
+    "last_content_update" : 1565537461790,
+    "path" : "~/GitHub/Robotox/robotox/Painel_agrotoxico.Rmd",
+    "project_path" : "Painel_agrotoxico.Rmd",
+    "properties" : {
+        "cursorPosition" : "32,48",
+        "last_setup_crc32" : "",
+        "scrollLine" : "12",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

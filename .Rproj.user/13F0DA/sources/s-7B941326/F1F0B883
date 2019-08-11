@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565442332370.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F1F0B883",
+    "lastKnownWriteTime" : 1564932904,
+    "last_content_update" : 1565442332370,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "49F15C3C",
+        "caption" : "df_join_agro_cultura",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=df_join_agro_cultura&cache_key=49F15C3C",
+        "displayedObservations" : "985",
+        "environment" : "",
+        "expression" : "df_join_agro_cultura",
+        "object" : "df_join_agro_cultura",
+        "preview" : "0",
+        "totalObservations" : "985",
+        "variables" : "9"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

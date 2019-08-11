@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565471451134.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "45E7CFFD",
+    "lastKnownWriteTime" : 8028074750225051768,
+    "last_content_update" : 1565471451134,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "8E3D46CB",
+        "caption" : "culturas",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=culturas&cache_key=8E3D46CB",
+        "displayedObservations" : 80,
+        "environment" : "",
+        "expression" : "culturas",
+        "object" : "culturas",
+        "preview" : 0,
+        "totalObservations" : 80,
+        "variables" : 1
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

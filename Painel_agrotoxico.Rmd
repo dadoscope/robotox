@@ -1,0 +1,43 @@
+---
+title: "Observatório dos novos agrotóxicos"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+```
+
+Column 
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+library(DT)
+load("data/robotox.RData")
+
+renderDataTable ({
+  agrotoxico%>%
+    # filter(is_retweet == FALSE) %>%
+    # distinct(created_at,screen_name,text,hashtags)%>%
+    DT::datatable(                  fillContainer = TRUE,
+                   selection = "none",
+                   extensions = "Buttons", 
+                   rownames = FALSE, 
+                   options = list(
+                    pageLength = NROW(agrotoxico),
+                    dom = 'Bfrtip',
+                    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+                   ))
+})
+
+
+
+```
+
+
