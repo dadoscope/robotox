@@ -263,3 +263,22 @@ nomes_curtos<- df_join_agro_cultura%>%
 library(readODS)
 readODS::read_ods("/data/tabela1618.ods")
 
+
+CAGED<- data.frame(salario="555,6")
+
+CAGED$salario[1] <- "555,6"
+
+library(stringr)
+CAGED$salario <- str_replace_all(CAGED$salario,
+                                 pattern = ",",
+                                 replacement = ".")
+
+
+CAGED$salario <- as.numeric(CAGED$salario)
+
+
+str_replace_all(num_char,
+                pattern = ",",
+                replacement = ".")
+
+as.numeric(num_char)

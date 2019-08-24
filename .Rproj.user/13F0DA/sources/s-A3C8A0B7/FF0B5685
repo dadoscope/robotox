@@ -1,24 +1,24 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1565537065747.000,
+    "created" : 1565989253618.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
-    "id" : "4DB7A974",
-    "lastKnownWriteTime" : 1564960679,
-    "last_content_update" : 1564960679,
-    "path" : "~/GitHub/STF_LJ/Tweets_STN_LJ.Rmd",
+    "id" : "FF0B5685",
+    "lastKnownWriteTime" : 1562456801,
+    "last_content_update" : 1562456801,
+    "path" : "~/GitHub/vazajato/Rede_de_Palavras/rede_palavras_interativa.Rmd",
     "project_path" : null,
     "properties" : {
-        "cursorPosition" : "41,0",
-        "scrollLine" : "12"
+        "cursorPosition" : "32,117",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 12,
+    "relative_order" : 13,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"

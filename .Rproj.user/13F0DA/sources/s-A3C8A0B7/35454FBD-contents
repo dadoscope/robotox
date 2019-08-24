@@ -217,7 +217,6 @@ factor_cultura<-(df_join_agro_cultura %>%
   summarise(contagem = n()) %>%
   arrange(contagem))$cultura
 
-df_cluster$influencers<- factor(df_cluster$influencers, levels = df_factor_influencers$influencers)
 
 df_join_agro_cultura$cultura <- factor(df_join_agro_cultura$cultura, levels = factor_cultura)
 
@@ -263,3 +262,22 @@ nomes_curtos<- df_join_agro_cultura%>%
 library(readODS)
 readODS::read_ods("/data/tabela1618.ods")
 
+
+CAGED<- data.frame(salario="555,6")
+
+CAGED$salario[1] <- "555,6"
+
+library(stringr)
+CAGED$salario <- str_replace_all(CAGED$salario,
+                                 pattern = ",",
+                                 replacement = ".")
+
+
+CAGED$salario <- as.numeric(CAGED$salario)
+
+
+str_replace_all(num_char,
+                pattern = ",",
+                replacement = ".")
+
+as.numeric(num_char)

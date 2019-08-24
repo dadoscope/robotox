@@ -222,5 +222,27 @@ sort(unique(df_culturas$cultura))
 
 df_join_agro_cultura<- agrotoxico %>% inner_join(df_culturas)
 
-save(list=c("df_culturas", "agrotoxico", "df_join_agro_cultura"), file = "robotox.RData")
+save(list=c("df_culturas", "agrotoxico", "df_join_agro_cultura"), file = "data/robotox.RData")
 
+
+
+load("data/robotox.RData")
+
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classe I - Extremamente Tóxico"] <- "Classe I - Extremamente Tóxico"                                  
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe I - Extremamente Tóxico."] <- "Classe I - Extremamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe II - Altamente tóxico."] <- "Classe II - Altamente tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe II - Altamente tóxico."] <- "Classe II - Altamente tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe II - Altamente Tóxico."] <- "Classe II - Altamente tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe II- Produto Altamente Tóxico."] <- "Classe II - Altamente tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação: Classe II - Altamente Tóxico"] <- "Classe II - Altamente tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III"] <- "Classe III - Moderadamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Extremamente Tóxico."] <- "Classe III - Moderadamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Medianamente Tóxico"] <- "Classe III - Moderadamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Medianamente Toxico."] <- "Classe III - Moderadamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Medianamente Tóxico."] <- "Classe III - Moderadamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe III - Mediante Tóxico."] <- "Classe III - Moderadamente Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe IV - Pouco Tóxico."] <-  "Classe IV - Pouco Tóxico"
+df_join_agro_cultura$Classificacao_toxicologica[df_join_agro_cultura$Classificacao_toxicologica == "Classificação toxicológica: Classe IV - Produto Pouco Tóxico."] <-  "Classe IV - Pouco Tóxico"   
+
+
+save(list=c("df_culturas", "agrotoxico", "df_join_agro_cultura"), file = "data/robotox.RData")

@@ -5,8 +5,8 @@ account: fabdev
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1079739
-bundleId: 2309336
+bundleId: 2328662
 url: https://fabdev.shinyapps.io/Painel_agrotoxico/
-when: 1565537504.34693
+when: 1566039165.82212
 asMultiple: FALSE
 asStatic: FALSE
